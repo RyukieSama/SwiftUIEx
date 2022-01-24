@@ -5,6 +5,8 @@
 //  Created by 王荣庆 on 2021/3/3.
 //
 
+#if !os(macOS)
+
 import UIKit
 import SwiftUI
 
@@ -47,3 +49,5 @@ extension UIViewController {
         self.present(toPresent, animated: animated, completion: completion)
     }
 }
+
+#endif

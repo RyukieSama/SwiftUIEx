@@ -5,6 +5,8 @@
 //  Created by 王荣庆 on 2021/3/4.
 //
 
+#if !os(macOS)
+
 import SwiftUI
 import UIKit
 
@@ -36,3 +38,5 @@ public struct SwiftUIEffectView: UIViewRepresentable {
     }
 
 }
+
+#endif

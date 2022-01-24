@@ -5,6 +5,8 @@
 //  Created by 王荣庆 on 2021/2/19.
 //
 
+#if !os(macOS)
+
 import UIKit
 import SwiftUI
 
@@ -25,3 +27,5 @@ public extension UIColor {
         return Color(self)
     }
 }
+
+#endif
