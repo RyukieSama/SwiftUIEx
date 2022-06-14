@@ -45,8 +45,19 @@ extension UIViewController {
                 // Set EnvironmentValues
                 .environment(\.viewController, ViewControllerHolder(toPresent))
         )
-        toPresent.view.backgroundColor = .clear
         self.present(toPresent, animated: animated, completion: completion)
+    }
+}
+
+extension UINavigationController {
+    public func push<Content: View>(animated: Bool = true, completion: @escaping () -> Void = {}, @ViewBuilder builder: () -> Content) {
+        let toPush = UIHostingController(rootView: AnyView(EmptyView()))
+        toPush.rootView = AnyView(
+            builder()
+                // Set EnvironmentValues
+                .environment(\.viewController, ViewControllerHolder(toPush))
+        )
+        pushViewController(toPush, animated: animated)
     }
 }
 

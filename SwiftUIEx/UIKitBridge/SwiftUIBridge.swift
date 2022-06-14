@@ -1,8 +1,8 @@
 //
-//  SwiftUIBridge.swift
-//  Loviary
+//  SwiftUIEffectView.swift
+//  SwiftUIEx
 //
-//  Created by 王荣庆 on 2021/2/19.
+//  Created by 王荣庆 on 2021/3/4.
 //
 
 #if !os(macOS)
@@ -10,14 +10,21 @@
 import UIKit
 import SwiftUI
 
-public protocol SwiftUIBridgeProtocol where Self: View {
-    /// 快速创建一个容器控制器
-    func createUIViewController() -> UIHostingController<Self>
+public protocol SwiftUIBridgeProtocol {
 }
 
-public extension SwiftUIBridgeProtocol {
+public extension SwiftUIBridgeProtocol where Self: View {
+    /// Create a UIHostingController container for a SwiftUI View
     func createUIViewController() -> UIHostingController<Self> {
         return UIHostingController(rootView: self)
+    }
+}
+
+public extension SwiftUIBridgeProtocol where Self: UIViewController {
+    /// Create a SwiftUI View for a UIViewController
+    @ViewBuilder
+    func createSwiftUIView() -> some View {
+        SwiftUIViewController(controller: self)
     }
 }
 
